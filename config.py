@@ -1,0 +1,1 @@
+WAITING_TIME = 5

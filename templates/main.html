@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    {% if current_user.is_authenticated %}
+        <script type="text/babel" src="{{ url_for('static', filename = 'js/tictactoe.js') }}"></script>
+    {% endif %}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}">
+    <title>
+        {% if current_user.is_authenticated %}Tic Tac Toe{% else %}Log in, please.{% endif %}
+    </title>
+</head>
+<body>
+    <div id="tictactoe" class="margin5 padding5">
+        {% if current_user.is_authenticated %}
+            <p class="margin5 padding5">
+                <a href="/logout">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/">Refresh</a>
+            </p>
+            <div id="game"></div>
+        {% else %}
+            <form action="/login" method="post">
+                <p><input type=text name=username /></p>
+                <p><input type=password name=password /></p>
+                <p><input type=submit value=Login /></p>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>
