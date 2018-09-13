@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD [ "python", "./tasks.py" ]
+CMD [ "python", "./tictactoe.py" ]
