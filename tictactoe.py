@@ -1,3 +1,5 @@
+import os
+
 from app import app, socketio
 from models import db, User
 
@@ -11,4 +13,5 @@ if __name__ == '__main__':
     db.session.add(user0)
     db.session.commit()
 
-    socketio.run(app, host='0.0.0.0')
+    port = int(os.environ.get('PORT', 5000))
+    socketio.run(app, host='0.0.0.0', port=port)
