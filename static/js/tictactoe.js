@@ -58,7 +58,7 @@ class Game extends React.Component {
 
   componentDidMount() {
     var self = this;
-    this.socket = io.connect('http://' + document.domain + ':' + location.port);
+    this.socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
     this.socket.on('connect', function() {
       self.socket.emit('hi');
     });
